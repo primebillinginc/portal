@@ -1,7 +1,5 @@
 /**
-* PHP Email Form Validation - v2.1
-* URL: https://bootstrapmade.com/php-email-form/
-* Author: BootstrapMade.com
+* Form Validation
 */
 !(function($) {
   "use strict";
@@ -124,12 +122,15 @@
   });
 
   function php_email_form_submit(this_form, action, data) {
-    $.ajax({
-      type: "POST",
-      url: action,
-      data: data,
-      timeout: 40000
-    }).done( function(msg){
+    Email.send({
+      Host: "smtp.gmail.com",
+      Username : "siteprimebillinginc@gmail.com",
+      Password : "Mikipass.1980",
+      To : "siteprimebillinginc@gmail.com",
+      From : document.getElementById("email").value,
+      Subject : document.getElementById("subject").value,
+      Body : document.getElementById("name").value + " wrote: <br>"+ document.getElementById("message").value,
+    }).then( function(msg){
       if (msg.trim() == 'OK') {
         this_form.find('.loading').slideUp();
         this_form.find('.sent-message').slideDown();
@@ -141,7 +142,7 @@
         }
         this_form.find('.error-message').slideDown().html(msg);
       }
-    }).fail( function(data){
+    }).catch( function(data){
       console.log(data);
       var error_msg = "Form submission failed!<br>";
       if(data.statusText || data.status) {
