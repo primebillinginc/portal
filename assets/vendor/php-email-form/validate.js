@@ -126,7 +126,7 @@
       Host: "smtp.gmail.com",
       Username : "siteprimebillinginc@gmail.com",
       Password : "Mikipass.1980",
-      To : "siteprimebillinginc@gmail.com",
+      To : "primebillinginc@gmail.com",
       From : document.getElementById("email").value,
       Subject : document.getElementById("subject").value,
       Body : document.getElementById("name").value + " wrote: <br>"+ document.getElementById("message").value,
